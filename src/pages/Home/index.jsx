@@ -1,6 +1,7 @@
 import { Card } from "../../components/Card";
 import { Carousel } from "../../components/Carousel";
 import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer";
 
 import { Container } from "./styles";
 
@@ -20,6 +21,7 @@ export function Home() {
           </Carousel>
         </section>
       </main>
+      <Footer />
     </Container>
   );
 }

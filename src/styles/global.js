@@ -12,6 +12,7 @@ export default createGlobalStyle`
   }
 
   body {
+    overflow-x: hidden;
     background: ${({ theme }) => theme.COLORS.BACKGROUND_900};
     
     font-family: 'Poppins', sans-serif;
