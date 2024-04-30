@@ -40,6 +40,7 @@ export const Form = styled.form`
   flex-direction: column;
 
   gap: 3.2rem;
+
   section {
     display: flex;
     align-items: space-between;

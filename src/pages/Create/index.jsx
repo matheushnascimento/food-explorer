@@ -5,8 +5,10 @@ import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { Ingredient } from "../../components/Ingredient";
 import { Input } from "../../components/Input";
+import { Select } from "../../components/Select";
 
 import { PiCaretLeftBold, PiUploadSimple } from "react-icons/pi";
+import { FaChevronDown } from "react-icons/fa";
 
 export function Create() {
   const ingredients = ["alface", "cebola", " pão", " rabanete", " tomate"];
@@ -38,20 +40,17 @@ export function Create() {
               id="name"
               placeholder="Ex.: Salada Ceasar"
             />
-            <div className="input-wrapper">
-              <label>Categoria</label>
-              <select>
-                <option>Refeição</option>
-                <option>Sobremesa</option>
-                <option>Bebida</option>
-              </select>
-            </div>
+            <Select label="Categoria">
+              <option>Refeição</option>
+              <option>Sobremesa</option>
+              <option>Bebida</option>
+              <FaChevronDown />
+            </Select>
           </section>
 
           <section>
             <div className="input-wrapper">
               <label>Ingredientes</label>
-
               {ingredients &&
                 ingredients.map(ingredient => (
                   <Ingredient title={ingredient} />
