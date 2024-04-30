@@ -3,7 +3,7 @@ export default {
     BACKGROUND_900: "#000A0F",
     BACKGROUND_800: "#0D1D25",
     BACKGROUND_700: "#92000E",
-    BACKGROUND_600: "hsla(200, 100%, 5%, 1)",
+    BACKGROUND_600: "#00111A",
 
     WHITE: "#FFFFFF",
     WHITE_100: "#E1E1E6",
@@ -17,11 +17,13 @@ export default {
     BLUE_600: "#00070a",
 
     GRAY_100: "#C4C4CC",
-    GRAY_200: "rgba(255, 255, 255, 0.3)",
+    GRAY_200: "#ffffff4d",
     GRAY_300: "#7C7C8A",
-    GRAY_400: "rgba(255, 255, 255, 0.05)",
+    GRAY_400: "#ffffff0d",
 
     RED: "#FF002E",
     BLACK: "#0D0C0F",
+
+    DARK_800: "#0d161b",
   },
 };
