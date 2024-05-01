@@ -24,6 +24,8 @@ export default {
     RED: "#FF002E",
     BLACK: "#0D0C0F",
 
+    LIGHT_600: "#76797B",
+
     DARK_800: "#0d161b",
   },
 };

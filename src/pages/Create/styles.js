@@ -6,6 +6,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
+  height: 100%;
+
   main {
     width: 90%;
     padding: 3.2rem;
@@ -43,9 +45,15 @@ export const Form = styled.form`
 
   section {
     display: flex;
-    align-items: space-between;
-
     gap: 3.2rem;
+  }
+
+  section:nth-child(2) > .input-wrapper:first-child {
+    display: flex;
+    flex-direction: column;
+
+    flex-grow: 1;
+    gap: 1rem;
   }
 
   span {
@@ -92,5 +100,26 @@ export const Form = styled.form`
       width: 2.4rem;
       height: 2.4rem;
     }
+  }
+
+  #ingredients_label {
+    font-size: 1.6rem;
+    color: ${({ theme }) => theme.COLORS.GRAY_100};
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    gap: 1.6rem;
+
+    height: auto;
+
+    padding: 0.4rem 0.8rem;
+
+    background: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+
+    border-radius: 0.8rem;
+    flex-wrap: wrap;
   }
 `;
