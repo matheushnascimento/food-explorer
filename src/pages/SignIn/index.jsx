@@ -2,7 +2,7 @@ import { Button } from "../../components/Button";
 
 import { Container, Form } from "./styles";
 
-import image from "../../assets/foodexplorer.svg";
+import image from "../../assets/foodExplorer.svg";
 
 export function SignIn() {
   return (

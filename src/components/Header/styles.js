@@ -24,8 +24,6 @@ export const Container = styled.header`
 
     gap: 1.4rem;
 
-    width: 100%;
-
     border-radius: 0.5rem;
 
     padding: 1.2rem 1.4rem;

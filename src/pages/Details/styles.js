@@ -13,6 +13,7 @@ export const Container = styled.div`
   div {
     display: flex;
     align-items: center;
+    gap: 3.3rem;
   }
 
   svg {
@@ -72,5 +73,24 @@ export const Container = styled.div`
   ul {
     display: flex;
     gap: 1.2rem;
+  }
+
+  #quantity {
+    display: flex;
+    align-items: center;
+
+    gap: 1.4rem;
+
+    font-size: 2rem;
+  }
+
+  #plus_button,
+  #minus_button {
+    width: 2.4rem;
+    height: 2.4rem;
+
+    :hover {
+      cursor: pointer;
+    }
   }
 `;

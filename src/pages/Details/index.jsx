@@ -6,6 +6,9 @@ import { Header } from "../../components/Header";
 import { Ingredient } from "../../components/Ingredient";
 
 import { PiCaretLeftBold } from "react-icons/pi";
+import { FaMinus, FaPlus } from "react-icons/fa";
+
+import { USER_ROLE } from "../../utils/roles";
 
 export function Details() {
   const ingredients = ["alface", "cebola", " pão", " rabanete", " tomate"];
@@ -34,7 +37,16 @@ export function Details() {
                   <Ingredient title={ingredient} />
                 ))}
             </ul>
-            <Button title="Editar pato" />
+            {USER_ROLE.ADMIN === "admi" ? (
+              <Button title="Editar pato" />
+            ) : (
+              <div>
+                <span id="quantity">
+                  <FaMinus id="minus_button" /> 01 <FaPlus id="plus_button" />
+                </span>
+                <Button title="Incluir R$25,00" />
+              </div>
+            )}
           </div>
         </section>
       </main>

@@ -131,6 +131,7 @@ export const Form = styled.form`
   }
 
   #delete_button {
+    align-self: flex-end;
     background: ${({ theme }) => theme.COLORS.DARK_800};
   }
 
