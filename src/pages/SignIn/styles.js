@@ -10,6 +10,11 @@ export const Container = styled.div`
   min-height: 100vh;
 
   background: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+
+  @media (max-width: 968px) {
+    flex-direction: column;
+    gap: 8rem;
+  }
 `;
 
 export const Form = styled.form`
@@ -64,5 +69,19 @@ export const Form = styled.form`
     color: ${({ theme }) => theme.COLORS.WHITE};
 
     text-decoration: none;
+  }
+
+  @media (max-width: 968px) {
+    background: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+
+    h1 {
+      display: none;
+    }
+
+    input {
+      background: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+
+      border: none;
+    }
   }
 `;
