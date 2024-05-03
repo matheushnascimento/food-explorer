@@ -6,23 +6,13 @@ import { Header } from "../../components/Header";
 import { IngredientTag } from "../../components/IngredientTag";
 import { Input } from "../../components/Input";
 import { Select } from "../../components/Select";
+import { Textarea } from "../../components/Textarea";
 
 import { PiCaretLeftBold, PiUploadSimple } from "react-icons/pi";
 import { FaChevronDown } from "react-icons/fa";
 
 export function Create() {
-  const ingredients = [
-    "alface",
-    "cebola",
-    " pão",
-    " rabanete",
-    " tomate",
-    "alface",
-    "cebola",
-    " pão",
-    " rabanete",
-    " tomate",
-  ];
+  const ingredients = [];
   return (
     <Container>
       <Header />
@@ -72,9 +62,13 @@ export function Create() {
               <Input label="Preço" type="number" placeholder="R$ 00,00" />
             </div>
           </section>
-          <textarea name="" id="" cols="30" rows="10"></textarea>
+
+          <Textarea
+            label="Descrição"
+            placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
+          />
+          <Button id="submit_button" title="Salvar alterações" />
         </Form>
-        <Button title="Salvar alterações" />
       </main>
       <Footer />
     </Container>

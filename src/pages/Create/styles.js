@@ -122,4 +122,10 @@ export const Form = styled.form`
     border-radius: 0.8rem;
     flex-wrap: wrap;
   }
+
+  #submit_button {
+    align-self: flex-end;
+
+    background: ${({ theme }) => theme.COLORS.TOMATO_400};
+  }
 `;

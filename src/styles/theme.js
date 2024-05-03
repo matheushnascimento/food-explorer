@@ -27,5 +27,7 @@ export default {
     LIGHT_600: "#76797B",
 
     DARK_800: "#0d161b",
+
+    TOMATO_400: "#AB4D55",
   },
 };
