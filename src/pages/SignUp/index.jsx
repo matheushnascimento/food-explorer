@@ -1,13 +1,13 @@
-import { Button } from "../../components/Button";
-
 import { Container, Form } from "./styles";
+
+import { Button } from "../../components/Button";
 
 import image from "../../assets/foodExplorer.svg";
 
 export function SignUp() {
   return (
     <Container>
-      <img src={image} alt="foodexplorer" />
+      <img src={image} alt="food explorer" />
       <Form>
         <h1>Crie sua conta</h1>
         <div className="input-wrapper">
