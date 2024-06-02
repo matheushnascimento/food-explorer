@@ -53,6 +53,7 @@ export const Form = styled.form`
   }
 
   input {
+    color: ${({ theme }) => theme.COLORS.WHITE_100};
     background: ${({ theme }) => theme.COLORS.BACKGROUND_800};
 
     padding: 1.2rem 1.4rem;

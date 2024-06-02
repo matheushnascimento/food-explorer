@@ -7,6 +7,7 @@ export const Container = styled.div`
 
   flex-direction: column;
   align-items: center;
+  align-content: space-between;
   justify-content: center;
   gap: 1.5rem;
 
@@ -24,6 +25,10 @@ export const Container = styled.div`
 
     width: 2.4rem;
     height: 2.4rem;
+
+    & {
+      cursor: pointer;
+    }
   }
 
   img {
@@ -47,6 +52,7 @@ export const Container = styled.div`
   span {
     font-family: "Roboto", sans-serif;
     color: ${({ theme }) => theme.COLORS.BLUE_100};
+    justify-items: bottom;
     font-size: 3.2rem;
   }
 `;

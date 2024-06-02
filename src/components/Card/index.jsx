@@ -3,20 +3,19 @@ import { Container } from "./styles";
 import { PiPencilSimple } from "react-icons/pi";
 import { CiHeart } from "react-icons/ci";
 
+import { useAuth } from "../../hooks/auth";
 import { USER_ROLE } from "../../utils/roles";
 
-export function Card() {
+export function Card({ data }) {
+  const { user } = useAuth();
+
   return (
     <Container>
-      {USER_ROLE.ADMIN === "admin" ? <PiPencilSimple /> : <CiHeart />}
-      <img
-        src={`https://foodish-api.com/images/pizza/pizza${parseInt(
-          Math.random() * 90
-        )}.jpg`}
-      />
-      <h3>Pizza Margherita</h3>
-      <p>Massa fresca, mussarela e manjericão</p>
-      <span>R$75,50</span>
+      {USER_ROLE.ADMIN === user.role ? <PiPencilSimple /> : <CiHeart />}
+      <img />
+      <h3>{data.name}</h3>
+      <p>{data.description}</p>
+      <span>{data.price}</span>
     </Container>
   );
 }

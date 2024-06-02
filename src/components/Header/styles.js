@@ -34,6 +34,10 @@ export const Container = styled.header`
   svg {
     width: 3.2rem !important;
     height: 3.2rem !important;
+
+    & {
+      cursor: pointer;
+    }
   }
 
   input {

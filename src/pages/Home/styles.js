@@ -1,13 +1,23 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  min-height: 100vh;
-
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
 
   main {
-    padding: 3.2rem;
+  }
+
+  .swiper {
+    width: 117.4rem;
+    z-index: 0;
+  }
+
+  .swiper-slide {
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;

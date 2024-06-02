@@ -8,7 +8,7 @@ import { Edit } from "../pages/Edit";
 export function AppRoutes() {
   return (
     <Routes>
-      <Route path="/home" element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="/details" element={<Details />} />
       <Route path="/create" element={<Create />} />
       <Route path="/edit" element={<Edit />} />
