@@ -1,4 +1,8 @@
+import { Link, useNavigate } from "react-router-dom";
 import { Container, Form } from "./styles";
+
+import { PiCaretLeftBold, PiUploadSimple } from "react-icons/pi";
+import { FaChevronDown } from "react-icons/fa";
 
 import { Button } from "../../components/Button";
 import { Footer } from "../../components/Footer";
@@ -8,18 +12,16 @@ import { Input } from "../../components/Input";
 import { Select } from "../../components/Select";
 import { Textarea } from "../../components/Textarea";
 
-import { PiCaretLeftBold, PiUploadSimple } from "react-icons/pi";
-import { FaChevronDown } from "react-icons/fa";
-
-export function Create() {
+export function New() {
   const ingredients = [];
+  const navigate = useNavigate();
   return (
     <Container>
       <Header />
       <main>
         <div>
           <PiCaretLeftBold />
-          <a href="#">Voltar</a>
+          <Link to="/">Voltar</Link>
         </div>
         <h1>Adicionar prato</h1>
         <Form>
