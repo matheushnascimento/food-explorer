@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { USER_ROLE } from "../../utils/roles";
 import { useAuth } from "../../hooks/auth";
 
@@ -11,14 +13,19 @@ import { PiReceiptLight } from "react-icons/pi";
 
 import headerImage from "../../assets/foodExplorer.svg";
 import adminHeaderImage from "../../assets/adminFoodExplorer.svg";
-import { Navigate } from "react-router-dom";
 
 export function Header() {
   const { user, signOut } = useAuth();
+  const navigate = useNavigate();
 
   function handleSignOut() {
     signOut();
   }
+
+  function handleToNew(id) {
+    navigate(`/new`);
+  }
+
   return (
     <Container>
       {USER_ROLE.CUSTOMER === user.role ? (
@@ -31,7 +38,7 @@ export function Header() {
         <input type="text" placeholder="Busque por pratos ou ingredientes" />
       </div>
       {USER_ROLE.ADMIN === user.role ? (
-        <Button title="Novo Prato" />
+        <Button title="Novo Prato" onClick={handleToNew} />
       ) : (
         <Button icon={PiReceiptLight} title={`Pedidos (${0})`} />
       )}

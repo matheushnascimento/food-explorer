@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  position: relative;
   width: 30.4rem;
   height: 46.2rem;
 
@@ -20,9 +19,8 @@ export const Container = styled.div`
   > svg {
     position: absolute;
 
-    right: 2.4rem;
-    top: 2.4rem;
-
+    top: 1.5rem;
+    right: 5.5rem;
     width: 2.4rem;
     height: 2.4rem;
 
@@ -50,9 +48,9 @@ export const Container = styled.div`
   }
 
   span {
+    position: absolute;
     font-family: "Roboto", sans-serif;
     color: ${({ theme }) => theme.COLORS.BLUE_100};
-    justify-items: bottom;
     font-size: 3.2rem;
   }
 `;

@@ -15,7 +15,7 @@ export function Card({ data }) {
       <img />
       <h3>{data.name}</h3>
       <p>{data.description}</p>
-      <span>{data.price}</span>
+      <span>R${data.price}</span>
     </Container>
   );
 }
