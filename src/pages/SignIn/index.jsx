@@ -10,8 +10,8 @@ import { Button } from "../../components/Button";
 import image from "../../assets/foodExplorer.svg";
 
 export function SignIn() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("beto@email.com");
+  const [password, setPassword] = useState("senha123");
   const { signIn } = useAuth();
 
   const navigate = useNavigate();

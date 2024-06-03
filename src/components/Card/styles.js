@@ -4,12 +4,11 @@ export const Container = styled.div`
   width: 30.4rem;
   height: 46.2rem;
 
+  display: flex;
   flex-direction: column;
   align-items: center;
-  align-content: space-between;
-  justify-content: center;
-  gap: 1.5rem;
 
+  gap: 1.6rem;
   padding: 2.4rem;
 
   border-radius: 0.8rem;
@@ -48,7 +47,6 @@ export const Container = styled.div`
   }
 
   span {
-    position: absolute;
     font-family: "Roboto", sans-serif;
     color: ${({ theme }) => theme.COLORS.BLUE_100};
     font-size: 3.2rem;
