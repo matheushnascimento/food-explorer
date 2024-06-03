@@ -1,8 +1,8 @@
 import { Container } from "./style";
 
-export function Select({ label, children }) {
+export function Select({ label, children, ...rest }) {
   return (
-    <Container>
+    <Container {...rest}>
       <label>{label}</label>
       <select>{children}</select>
     </Container>

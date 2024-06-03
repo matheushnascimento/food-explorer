@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
+
   label {
     font-family: "Roboto", sans-serif;
     color: ${({ theme }) => theme.COLORS.GRAY_100};
@@ -12,8 +13,8 @@ export const Container = styled.div`
 
   select {
     width: 36.4rem;
+    flex-grow: 0;
     height: 4.8rem;
-
     padding: 1.6rem;
 
     background: ${({ theme }) => theme.COLORS.BACKGROUND_800};

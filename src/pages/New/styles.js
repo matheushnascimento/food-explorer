@@ -44,8 +44,15 @@ export const Form = styled.form`
   gap: 3.2rem;
 
   section {
+    width: 100%;
     display: flex;
+
     gap: 3.2rem;
+  }
+
+  section:first-child {
+    display: grid;
+    grid-template-columns: auto 1fr 36.4rem;
   }
 
   section:nth-child(2) > .input-wrapper:first-child {
@@ -71,6 +78,7 @@ export const Form = styled.form`
 
   #name {
     flex-grow: 1;
+    width: 100%;
   }
 
   #dishImage {
@@ -100,6 +108,10 @@ export const Form = styled.form`
       width: 2.4rem;
       height: 2.4rem;
     }
+  }
+
+  .category {
+    width: 100rem;
   }
 
   #ingredients_label {

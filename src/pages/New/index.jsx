@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Container, Form } from "./styles";
 
@@ -13,8 +14,21 @@ import { Select } from "../../components/Select";
 import { Textarea } from "../../components/Textarea";
 
 export function New() {
-  const ingredients = [];
+  const [ingredients, setIngredients] = useState([]);
+  const [newIngredient, setNewIngredient] = useState("");
+
   const navigate = useNavigate();
+
+  function handleAddIngredient() {
+    setIngredients(prevState => [...prevState, newIngredient]);
+    setNewIngredient("");
+  }
+
+  function handleRemoveIngredient(deleted) {
+    setIngredients(prevState =>
+      prevState.filter(ingredient => ingredient !== deleted)
+    );
+  }
   return (
     <Container>
       <Header />
@@ -29,10 +43,10 @@ export function New() {
             <div id="dishImage">
               <span>Imagem do prato</span>
               <Input
-                labelFor="image"
                 icon={PiUploadSimple}
                 label="Selecionar imagem"
                 type="file"
+                id="image"
               />
             </div>
             <Input
@@ -41,7 +55,7 @@ export function New() {
               id="name"
               placeholder="Ex.: Salada Ceasar"
             />
-            <Select label="Categoria">
+            <Select className="category" label="Categoria">
               <option>Refeição</option>
               <option>Sobremesa</option>
               <option>Bebida</option>
@@ -54,10 +68,19 @@ export function New() {
               <label id="ingredients_label">Ingredientes</label>
               <ul>
                 {ingredients &&
-                  ingredients.map(ingredient => (
-                    <IngredientTag value={ingredient} />
+                  ingredients.map((ingredient, index) => (
+                    <IngredientTag
+                      key={String(index)}
+                      value={ingredient}
+                      onClick={() => handleRemoveIngredient(ingredient)}
+                    />
                   ))}
-                <IngredientTag $isnew={true} />
+                <IngredientTag
+                  $isnew={true}
+                  onChange={e => setNewIngredient(e.target.value)}
+                  value={newIngredient}
+                  onClick={handleAddIngredient}
+                />
               </ul>
             </div>
             <div className="input-wrapper">

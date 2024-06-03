@@ -4,17 +4,18 @@ export function Input({
   labelFor,
   label,
   icon: Icon,
+  id,
   type,
   placeholder,
   ...rest
 }) {
   return (
     <Container {...rest}>
-      <label htmlFor={labelFor}>
+      <label htmlFor={id}>
         {Icon && <Icon />}
         {label}
       </label>
-      <input type={type} name={labelFor} placeholder={placeholder} />
+      <input type={type} id={id} placeholder={placeholder} />
     </Container>
   );
 }
