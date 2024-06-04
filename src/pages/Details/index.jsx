@@ -9,9 +9,49 @@ import { PiCaretLeftBold } from "react-icons/pi";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
 import { USER_ROLE } from "../../utils/roles";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useAuth } from "../../hooks/auth";
+import { api } from "../../services/api";
 
 export function Details() {
-  const ingredients = ["alface", "cebola", " pão", " rabanete", " tomate"];
+  const [data, setData] = useState("");
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
+  const [ingredients, setIngredients] = useState([]);
+  const [newIngredient, setNewIngredient] = useState("");
+  const [price, setPrice] = useState();
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
+
+  const { user } = useAuth();
+
+  const params = useParams();
+  const navigate = useNavigate();
+
+  function handleToEdit() {
+    navigate(`/edit/${params.id}`);
+  }
+
+  useEffect(() => {
+    async function fetchDishes() {
+      try {
+        const response = await api.get(`/dishes/${params.id}`);
+        setData(response.data);
+        const { name, category, price, description, ingredients } =
+          response.data;
+        setName(name);
+        setCategory(category);
+        setPrice(price);
+        setDescription(description);
+        setIngredients(ingredients.map(ingredient => ingredient.name));
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchDishes();
+  }, []);
+
   return (
     <Container>
       <Header />
@@ -19,7 +59,7 @@ export function Details() {
       <main>
         <div>
           <PiCaretLeftBold />
-          <a href="#">Voltar</a>
+          <Link to="/">Voltar</Link>
         </div>
         <section>
           <img
@@ -28,17 +68,17 @@ export function Details() {
             )}.jpg`}
           />
           <div>
-            <h1>Pizza Marguerita</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <h1>{name}</h1>
+            <p>{description}</p>
 
             <ul>
               {ingredients &&
-                ingredients.map(ingredient => (
-                  <Ingredient title={ingredient} />
+                ingredients.map((ingredient, index) => (
+                  <Ingredient key={String(index)} title={ingredient} />
                 ))}
             </ul>
-            {USER_ROLE.ADMIN === "admi" ? (
-              <Button title="Editar pato" />
+            {USER_ROLE.ADMIN === user.role ? (
+              <Button title="Editar prato" onClick={handleToEdit} />
             ) : (
               <div>
                 <span id="quantity">
