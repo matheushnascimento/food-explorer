@@ -6,16 +6,9 @@ import { api } from "../services/api";
 
 function AuthProvider({ children }) {
   const [data, setData] = useState({});
-
   async function signIn({ email, password }) {
     try {
-      const response = await api.post(
-        "sessions",
-        { email, password },
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await api.post("sessions", { email, password });
       const { user } = response.data;
 
       localStorage.setItem("@foodexplorer:user", JSON.stringify(user));
