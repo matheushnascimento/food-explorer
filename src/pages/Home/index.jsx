@@ -19,18 +19,20 @@ import frame from "../../assets/BannerHome.png";
 
 export function Home() {
   const [dishes, setDishes] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     async function fetchDishes() {
-      const response = await api.get("dishes");
-      setDishes(response.data);
+      const response = await api.get(`dishes?search=${search}`);
+      console.log(response.data);
     }
 
     fetchDishes();
-  }, []);
+  }, [search]);
+
   return (
     <Container>
-      <Header />
+      <Header search={setSearch} />
       <main>
         <img src={frame} alt="Sabores inigualáveis" />
         {dishes.filter(dish => dish.category == "refeicao").length > 0 && (

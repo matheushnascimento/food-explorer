@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { USER_ROLE } from "../../utils/roles";
@@ -14,8 +15,9 @@ import { PiReceiptLight } from "react-icons/pi";
 import headerImage from "../../assets/foodExplorer.svg";
 import adminHeaderImage from "../../assets/adminFoodExplorer.svg";
 
-export function Header() {
+export function Header({ search }) {
   const { user, signOut } = useAuth();
+
   const navigate = useNavigate();
 
   function handleSignOut() {
@@ -23,7 +25,7 @@ export function Header() {
     navigate(`/`);
   }
 
-  function handleToNew(id) {
+  function handleToNew() {
     navigate(`/new`);
   }
 
@@ -36,7 +38,11 @@ export function Header() {
       )}
       <div className="input-wrapper">
         <IoIosSearch />
-        <input type="text" placeholder="Busque por pratos ou ingredientes" />
+        <input
+          type="text"
+          placeholder="Busque por pratos ou ingredientes"
+          onChange={e => search(e.target.value)}
+        />
       </div>
       {USER_ROLE.ADMIN === user.role ? (
         <Button title="Novo Prato" onClick={handleToNew} />

@@ -43,6 +43,8 @@ export const Container = styled.header`
   input {
     width: 100%;
 
+    color: ${({ theme }) => theme.COLORS.WHITE_100};
+
     background: none;
     border: none;
   }
