@@ -18,7 +18,6 @@ export function SignIn() {
 
   function handleSignIn() {
     signIn({ email, password });
-    navigate("/");
   }
   return (
     <Container>
