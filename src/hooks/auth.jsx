@@ -26,6 +26,8 @@ function AuthProvider({ children }) {
   function signOut() {
     localStorage.removeItem("@foodexplorer:user");
 
+    api.delete("/sessions");
+
     setData({});
   }
 
