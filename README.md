@@ -59,7 +59,7 @@ $ git clone git@github.com:matheushnascimento/food-explorer.git
 
 ```bash
 # Navegue até o diretório
-$ cd food-explorer-frontend
+$ cd food-explorer
 
 # Instale as dependências
 $ npm install
@@ -67,6 +67,10 @@ $ npm install
 # Inicie o servidor
 $ npm run dev
 ```
+
+### backend da aplicação
+
+Você pode acessar o backend da aplicação através <a href="https://github.com/matheushnascimento/food-explorer-backend">desse repositório</a>
 
 #### 🪪 Entrando com uma conta _admin_
 
