@@ -11,18 +11,18 @@ export function Card({ data }) {
   const { user } = useAuth();
   const navigate = useNavigate();
 
-  async function handleCardSelection() {
-    {
-      USER_ROLE.ADMIN === user.role
-        ? navigate(`/edit/${data.id}`)
-        : navigate(`/details/${data.id}`);
-    }
+  async function handleDetails() {
+    navigate(`/details/${data.id}`);
   }
 
   return (
-    <Container onClick={handleCardSelection}>
+    <Container onClick={handleDetails}>
       {USER_ROLE.ADMIN === user.role ? <PiPencilSimple /> : <CiHeart />}
-      <img />
+      <img
+        src={`https://foodish-api.com/images/pizza/pizza${parseInt(
+          Math.random() * 90
+        )}.jpg`}
+      />
       <h3>{data.name}</h3>
       <p>{data.description}</p>
       <span>R${data.price}</span>
