@@ -20,6 +20,7 @@ export function Header() {
 
   function handleSignOut() {
     signOut();
+    navigate(`/`);
   }
 
   function handleToNew(id) {
