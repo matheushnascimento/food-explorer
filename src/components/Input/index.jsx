@@ -7,6 +7,8 @@ export function Input({
   id,
   type,
   placeholder,
+  step,
+  value,
   ...rest
 }) {
   return (
@@ -15,7 +17,13 @@ export function Input({
         {Icon && <Icon />}
         {label}
       </label>
-      <input type={type} id={id} placeholder={placeholder} />
+      <input
+        id={id}
+        placeholder={placeholder}
+        step={step}
+        type={type}
+        value={value}
+      />
     </Container>
   );
 }
