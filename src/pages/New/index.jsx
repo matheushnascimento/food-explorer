@@ -1,3 +1,4 @@
+//#region imports
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Container, Form } from "./styles";
@@ -12,9 +13,11 @@ import { Input } from "../../components/Input";
 import { Select } from "../../components/Select";
 import { Textarea } from "../../components/Textarea";
 import { api } from "../../services/api";
-
+//#endregion
 export function New() {
-  const [image, setImage] = useState("");
+  //#region variables
+  const [image, setImage] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [price, setPrice] = useState("");
@@ -24,6 +27,9 @@ export function New() {
 
   const navigate = useNavigate();
 
+  //#endregion
+
+  //#region functions
   function handleAddIngredient() {
     setIngredients(prevState => [...prevState, newIngredient]);
     setNewIngredient("");
@@ -60,9 +66,20 @@ export function New() {
 
     navigate("/");
   }
+
+  function handleChangeImage(event) {
+    const file = event.target.files[0];
+    setImage(file);
+
+    const previewImage = URL.createObjectURL(file);
+
+    setImageFile(previewImage);
+  }
+  //#endregion
   return (
     <Container>
       <Header />
+      {image && <img src={imageFile} />}
       <main>
         <div>
           <PiCaretLeftBold />
@@ -75,10 +92,10 @@ export function New() {
               <span>Imagem do prato</span>
               <Input
                 icon={PiUploadSimple}
-                label="Selecionar imagem"
+                label={image ? `${image.name}` : "Selecionar imagem"}
                 type="file"
                 id="image"
-                onChange={e => setImage(e.target.value)}
+                onChange={handleChangeImage}
               />
             </div>
             <Input

@@ -17,6 +17,10 @@ export const Container = styled.div`
     font-family: "Roboto", sans-serif;
     color: ${({ theme }) => theme.COLORS.GRAY_100};
     font-size: 1.6rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
     background: none;
   }
 
