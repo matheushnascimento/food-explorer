@@ -1,3 +1,4 @@
+//#region import
 import { useEffect, useState } from "react";
 
 import { api } from "../../services/api";
@@ -16,15 +17,17 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import frame from "../../assets/BannerHome.png";
-
+//#endregion
 export function Home() {
+  //#region variables
   const [dishes, setDishes] = useState([]);
   const [search, setSearch] = useState("");
+  //#endregion
 
   useEffect(() => {
     async function fetchDishes() {
       const response = await api.get(`dishes?search=${search}`);
-      console.log(response.data);
+      setDishes(response.data);
     }
 
     fetchDishes();

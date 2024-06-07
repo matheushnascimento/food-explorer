@@ -1,3 +1,4 @@
+//#region imports
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
@@ -18,8 +19,9 @@ import { Select } from "../../components/Select";
 import { Textarea } from "../../components/Textarea";
 
 import { PiCaretLeftBold, PiUploadSimple } from "react-icons/pi";
-
+//#endregion
 export function Edit() {
+  //#region variables
   const [data, setData] = useState("");
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
@@ -33,6 +35,56 @@ export function Edit() {
 
   const params = useParams();
   const navigate = useNavigate();
+  //#endregion
+
+  //#region functions
+
+  function handleAddIngredient() {
+    setIngredients(prevState => [...prevState, newIngredient]);
+    setNewIngredient("");
+  }
+
+  function handleRemoveIngredient(deleted) {
+    setIngredients(prevState =>
+      prevState.filter(ingredient => ingredient !== deleted)
+    );
+  }
+
+  async function handleDeleteDish() {
+    await api.delete(`/dishes/${params.id}`).then(() => {
+      alert("Prato excluído com sucesso!");
+      navigate("/");
+    });
+  }
+
+  async function handleUpdateDish() {
+    if (!name || !category || !price || !description) {
+      return alert("Preencha todos os campos corretamente!");
+    }
+
+    const formData = new FormData();
+
+    formData.append("image", image);
+    formData.append("name", name);
+    formData.append("category", category);
+    formData.append("price", price);
+    formData.append("description", description);
+    ingredients.map(ingredient => formData.append("ingredient", ingredient));
+    await api
+      .put(`/dishes/${params.id}`, formData)
+      .then(() => {
+        alert("Alteração concluída com sucesso!");
+        navigate("/");
+      })
+      .catch(error => {
+        if (error.response.message) {
+          alert(error.response.message);
+        } else {
+          alert(error);
+        }
+      });
+  }
+  //#endregion
 
   useEffect(() => {
     async function fetchDishes() {
@@ -53,36 +105,6 @@ export function Edit() {
     fetchDishes();
   }, []);
 
-  function handleAddIngredient() {
-    setIngredients(prevState => [...prevState, newIngredient]);
-    setNewIngredient("");
-  }
-
-  function handleRemoveIngredient(deleted) {
-    setIngredients(prevState =>
-      prevState.filter(ingredient => ingredient !== deleted)
-    );
-  }
-
-  async function handleDeleteDish() {
-    await api
-      .delete(`/dishes/${params.id}`)
-      .then(() => alert("Prato excluído com sucesso!"));
-
-    navigate("/");
-  }
-  async function handleUpdateDish() {
-    await api
-      .put(`/dishes/${params.id}`, {
-        name,
-        category,
-        ingredients,
-        price,
-        description,
-      })
-      .then(() => alert("Alteração concluída com sucesso!"));
-    navigate("/");
-  }
   return (
     <Container>
       <Header />
@@ -98,10 +120,11 @@ export function Edit() {
               <div id="dishImage">
                 <span>Imagem do prato</span>
                 <Input
-                  labelFor="image"
                   icon={PiUploadSimple}
-                  label="Selecionar imagem"
+                  label={image ? `${image.name}` : "Selecionar imagem"}
                   type="file"
+                  id="image"
+                  onChange={e => setImage(e.target.files[0])}
                 />
               </div>
               <Input

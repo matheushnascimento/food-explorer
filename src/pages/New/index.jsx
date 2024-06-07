@@ -1,6 +1,9 @@
 //#region imports
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
+import { api } from "../../services/api";
+
 import { Container, Form } from "./styles";
 
 import { PiCaretLeftBold, PiUploadSimple } from "react-icons/pi";
@@ -12,12 +15,10 @@ import { IngredientTag } from "../../components/IngredientTag";
 import { Input } from "../../components/Input";
 import { Select } from "../../components/Select";
 import { Textarea } from "../../components/Textarea";
-import { api } from "../../services/api";
 //#endregion
 export function New() {
   //#region variables
   const [image, setImage] = useState(null);
-  const [imageFile, setImageFile] = useState(null);
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [price, setPrice] = useState("");
@@ -46,16 +47,21 @@ export function New() {
       return alert("Preencha todos os campos corretamente!");
     }
 
+    const formData = new FormData();
+
+    formData.append("image", image);
+    formData.append("name", name);
+    formData.append("category", category);
+    formData.append("price", price);
+    formData.append("description", description);
+    ingredients.map(ingredient => formData.append("ingredient", ingredient));
+    console.log(formData);
     await api
-      .post("/dishes", {
-        image,
-        name,
-        category,
-        price,
-        description,
-        ingredients,
+      .post("/dishes", formData)
+      .then(() => {
+        alert("Prato criado com sucesso");
+        navigate("/");
       })
-      .then(alert("Prato criado com sucesso"))
       .catch(error => {
         if (error.response.message) {
           alert(error.response.message);
@@ -63,23 +69,11 @@ export function New() {
           alert(error);
         }
       });
-
-    navigate("/");
-  }
-
-  function handleChangeImage(event) {
-    const file = event.target.files[0];
-    setImage(file);
-
-    const previewImage = URL.createObjectURL(file);
-
-    setImageFile(previewImage);
   }
   //#endregion
   return (
     <Container>
       <Header />
-      {image && <img src={imageFile} />}
       <main>
         <div>
           <PiCaretLeftBold />
@@ -95,7 +89,7 @@ export function New() {
                 label={image ? `${image.name}` : "Selecionar imagem"}
                 type="file"
                 id="image"
-                onChange={handleChangeImage}
+                onChange={e => setImage(e.target.files[0])}
               />
             </div>
             <Input

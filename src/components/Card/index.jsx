@@ -6,11 +6,14 @@ import { CiHeart } from "react-icons/ci";
 import { useAuth } from "../../hooks/auth";
 import { USER_ROLE } from "../../utils/roles";
 import { useNavigate } from "react-router-dom";
-
+import imagePlaceholder from "../../assets/unavailableImage.png";
+import { api } from "../../services/api";
 export function Card({ data }) {
   const { user } = useAuth();
   const navigate = useNavigate();
-
+  const imageURL = data.image
+    ? `${api.defaults.baseURL}/files/${data.image}`
+    : imagePlaceholder;
   async function handleDetails() {
     navigate(`/details/${data.id}`);
   }
@@ -18,11 +21,7 @@ export function Card({ data }) {
   return (
     <Container onClick={handleDetails}>
       {USER_ROLE.ADMIN === user.role ? <PiPencilSimple /> : <CiHeart />}
-      <img
-        src={`https://foodish-api.com/images/pizza/pizza${parseInt(
-          Math.random() * 90
-        )}.jpg`}
-      />
+      <img src={imageURL} />
       <h3>{data.name}</h3>
       <p>{data.description}</p>
       <span>R${data.price}</span>
